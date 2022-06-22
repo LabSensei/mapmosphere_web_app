@@ -1,0 +1,17 @@
+{
+    "name": "mapmosphere_code",
+    "version": "1.0.0",
+    "description": "Mapmosphere is a project based on OpenStreetMap Technology",
+    "main": "index.js",
+    "scripts": {
+        "compile:sass": "sass --watch static/scss:static/assets/css"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "sass": "^1.52.3"
+    },
+    "dependencies": {
+        "bootstrap": "^5.1.3"
+    }
+}

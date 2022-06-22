@@ -1,0 +1,41 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#map {
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    width: 74%;
+    height: 65%;
+}
+
+.bg-edark {
+    background-color: #000000!important
+}
+
+.bactive {
+    z-index: 2;
+    color: #fff!important;
+    background-color: #000000!important;
+    border-color: #000000!important;
+}
+
+.pin_badge_location {
+    margin-left: -60px;
+}
+
+.user_badge_location {
+    margin-left: -45px;
+}
+
+.disscussion_position {
+    padding-left: 10px;
+    padding-top: 6px;
+}
+
+.stats_positions {
+    padding-left: 10px;
+}

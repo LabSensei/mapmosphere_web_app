@@ -1,0 +1,7 @@
+django
+node
+npm
+sass
+bootstrap5
+autoprefixer
+fontawesome
