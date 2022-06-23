@@ -113,6 +113,8 @@ map.on('load', () => {
                             },
                             properties: {
                                 title: 'Bhadrakali',
+                                "prop0": "value0",
+                                "prop1": "0.0",
                             },
                         },
                         {
@@ -124,6 +126,8 @@ map.on('load', () => {
                             },
                             properties: {
                                 title: 'Marriot',
+                                "prop0": "value1",
+                                "prop1": "1.1",
                             },
                         },
                     ],
@@ -150,7 +154,8 @@ map.on('load', () => {
             // Copy coordinates array.
             const coordinates = e.features[0].geometry.coordinates.slice();
             const title = e.features[0].properties.title;
-            document.getElementById("marker_title").innerHTML = title;
+            const properties = e.features[0].properties;
+
             // Ensure that if the map is zoomed out such that multiple
             // copies of the feature are visible, the popup appears
             // over the copy being pointed to.
@@ -162,8 +167,22 @@ map.on('load', () => {
                 .setLngLat(coordinates)
                 .setHTML('Coordinates :<br/>' + coordinates)
                 .addTo(map);
-        });
 
+            // Information Display
+            let stringOutput = "";
+            const keyValue = (input) => Object.entries(input).forEach(([key, value]) => {
+                let tempString = '<div class="col-md-5">' + key + '</div><div class="col-md-7">' + value.toString() + '</div>'
+                    // tempString.append("<div>", key, "</div><div>", value, "</div>");
+                    // console.log(tempString);
+                    // console.log(key, value.toString());
+                    //   stringOutput.append(tempString)
+                stringOutput += tempString;
+                //   count++;
+            });
+            keyValue(properties);
+            console.log(stringOutput);
+            document.getElementById("pinInfo").innerHTML = stringOutput;
+        });
         // Change the cursor to a pointer when the mouse is over the points layer.
         map.on('mouseenter', 'points', () => {
             map.getCanvas().style.cursor = 'pointer';
