@@ -101,37 +101,35 @@ map.on('load', () => {
         map.addImage('custom-marker', image)
             // Add a GeoJSON source with 2 points
         map.addSource('points', {
-            type: 'geojson',
-            data: {
-                type: 'FeatureCollection',
-                features: [
-                    // {
-                    //   // feature for Bhadrakali
-                    //   type: 'Feature',
-                    //   geometry: {
-                    //     type: 'Point',
-                    //     coordinates: [85.31803723700848, 27.69799486867092],
-                    //   },
-                    //   properties: {
-                    //     title: 'Bhadrakali',
-                    //   },
-                    // },
-                    {
-                        // feature for Marriot
-                        type: 'Feature',
-                        geometry: {
-                            type: 'Point',
-                            coordinates: [85.32375517550032, 27.7123552519937],
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: [{
+                            // feature for Bhadrakali
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: [85.31803723700848, 27.69799486867092],
+                            },
+                            properties: {
+                                title: 'Bhadrakali',
+                            },
                         },
-                        properties: {
-                            title: 'Marriot',
+                        {
+                            // feature for Marriot
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: [85.32375517550032, 27.7123552519937],
+                            },
+                            properties: {
+                                title: 'Marriot',
+                            },
                         },
-                    },
-                ],
-            },
-        })
-
-        // Add a symbol layer
+                    ],
+                },
+            })
+            // Add a symbol layer
         map.addLayer({
             id: 'points',
             type: 'symbol',
@@ -145,5 +143,35 @@ map.on('load', () => {
                 'text-anchor': 'top',
             },
         })
+
+        // When a click event occurs on a feature in the points layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'points', (e) => {
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const title = e.features[0].properties.title;
+            document.getElementById("marker_title").innerHTML = title;
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML('Coordinates :<br/>' + coordinates)
+                .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the points layer.
+        map.on('mouseenter', 'points', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'points', () => {
+            map.getCanvas().style.cursor = '';
+        });
     })
 })
