@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'mphere_test', 
         'USER': 'postgres', 
         'PASSWORD': '',
-        'HOST': '192.168.1.51', 
+        'HOST': '172.19.101.41', 
         'PORT': '5432',
     }
 }

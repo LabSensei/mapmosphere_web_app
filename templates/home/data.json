@@ -1,0 +1,61 @@
+[{
+        "id": 1,
+        "feature": "ashish",
+        "name": "ashish",
+        "description": "this is my Description",
+        "remarks": "This is my Remarks",
+        "lat": "",
+        "long": "",
+        "tags": "348",
+        "tags1": "27.674501319699328",
+        "tags2": "85.31617868133982"
+    },
+    {
+        "id": 2,
+        "feature": "Fast Food",
+        "name": "ashish ",
+        "description": "Basaula ",
+        "remarks": "This is my Remarks",
+        "lat": "",
+        "long": "",
+        "tags": "{building : hh}{banan: bababa}{hshs: bsbs}",
+        "tags1": "28.595469212176177",
+        "tags2": "81.62938351804425"
+    },
+    {
+        "id": 3,
+        "feature": "Fast Food",
+        "name": "ashish ",
+        "description": "Basaula ",
+        "remarks": "This is my Remarks",
+        "lat": "",
+        "long": "",
+        "tags": "{building : hh}{banan: bababa}{hshs: bsbs}{building : hh}{banan: bababa}{hshs: bsbs}",
+        "tags1": "28.595469212176177",
+        "tags2": "81.62938351804425"
+    },
+    {
+        "id": 4,
+        "feature": "Cafe",
+        "name": "hari ram cafe ",
+        "description": "In this cafe you can get all types of data ",
+        "remarks": "This is my Remarks",
+        "lat": "",
+        "long": "",
+        "tags": "{amnity: cafe }{amnity : restaurant }",
+        "tags1": "28.034512446991787",
+        "tags2": "82.48971217375637"
+    },
+    {
+        "id": 5,
+        "feature": "Natural Features",
+        "name": "temple ",
+        "description": "this is temple",
+        "remarks": "This is my Remarks",
+        "lat": "",
+        "long": "",
+        "tags": "{amnity : temple }{ammity: workshop }",
+        "tags1": "26.460677472941065",
+        "tags2": "87.28593653206467"
+    }
+]

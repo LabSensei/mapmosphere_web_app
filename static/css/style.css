@@ -1,41 +1,158 @@
 html,
 body {
+    font-family: 'Tanker', sans-serif;
     max-width: 100%;
     overflow-x: hidden;
 }
 
 #map {
     position: absolute;
-    top: 55px;
+    top: 56px;
     bottom: 0;
     width: 74%;
-    height: 65%;
+    height: 64%;
+}
+
+.full_width {
+    width: 100%;
 }
 
 .bg-edark {
-    background-color: #000000!important
+    background-color: #3721a4!important
 }
 
 .bactive {
     z-index: 2;
     color: #fff!important;
-    background-color: #000000!important;
-    border-color: #000000!important;
+    background-color: #3721a4!important;
+    border-color: #3721a4!important;
 }
 
 .pin_badge_location {
     margin-left: -60px;
 }
 
-.user_badge_location {
-    margin-left: 0px;
+.map_information {
+    margin-right: 10px;
 }
 
 .disscussion_position {
     padding-left: 10px;
-    padding-top: 6px;
+    padding-top: 15px!important;
 }
 
 .stats_positions {
     padding-left: 10px;
+}
+
+
+/* Side Bar CSS*/
+
+.menu a {
+    display: block;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    color: #6e6e6e;
+    text-decoration: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s linear;
+    transform: translateY(-100%);
+}
+
+.show-sidebar {
+    transform: translate(0);
+}
+
+.fa-bars {
+    position: fixed;
+    top: 2rem;
+    right: 3rem;
+    color: #ff9100;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fa-times {
+    font-size: 1.5rem;
+    color: #ff9100;
+    cursor: pointer;
+}
+
+.fa-times:hover,
+.fa-bars:hover {
+    color: black;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.logo {
+    margin-left: -15px;
+    width: 300px;
+}
+
+@media (min-width: 676px) {
+    .sidebar {
+        width: 500px;
+    }
+}
+
+.menu a:hover {
+    border-left: 5px solid #008cff;
+    border-right: 5px solid #008cff;
+}
+
+.modal_button {
+    top: 60px;
+}
+
+@font-face {
+    font-family: 'Tanker-Regular';
+    src: url('../fonts/Tanker/WEB/fonts/Tanker-Regular.woff2') format('woff2'), url('../fonts/Tanker-Regular.woff') format('woff'), url('../fonts/Tanker-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Supreme-Variable';
+    src: url('../fonts/Supreme/Fonts/WEB/fonts/Supreme-Regular.woff2') format('woff2'), url('../fonts/Supreme-Variable.woff') format('woff'), url('../fonts/Supreme-Variable.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../fonts/JetBrains Mono/static/JetBrainsMono-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+}
+
+.tanker {
+    font-family: 'Tanker-Regular';
+    letter-spacing: 2px;
+}
+
+.supreme {
+    font-family: 'Supreme-Variable';
+}
+
+.jettbrains_mono {
+    font-family: 'JetBrainsMono';
+}
+
+.DivWithScroll {
+    overflow: scroll;
+    overflow-x: hidden;
 }

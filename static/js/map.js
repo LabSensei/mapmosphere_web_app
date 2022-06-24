@@ -1,9 +1,35 @@
+const json_url = 'http://172.19.101.41:3000/books';
+getData();
+let mygeojson = { "type": "FeatureCollection", "features": [] }
+async function getData() {
+    await fetch(json_url)
+        .then(response => response.json())
+        .then(data => {
+            for (let point of data) {
+                let coordinate = [parseFloat(point.tags2), parseFloat(point.tags1)];
+                let properties = point;
+                delete properties.tags2;
+                delete properties.tags1;
+                let feature = {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": coordinate
+                    },
+                    "properties": properties
+                }
+                mygeojson.features.push(feature);
+            }
+        });
+    console.log(mygeojson);
+    // console.log(mygeojson);
+}
 mapboxgl.accessToken = 'pk.eyJ1IjoieXVpbHRyIiwiYSI6ImNreXB2cmg4MDBlMmkybnFqdnFyejRjemoifQ.xfr3tk7f8lpmWdAOERT2xg'
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [85.32, 27.71], // starting position [lng, lat]
-    zoom: 12, // starting zoom
+    zoom: 6, // starting zoom
 })
 
 // Add the control to the map.
@@ -101,39 +127,11 @@ map.on('load', () => {
         map.addImage('custom-marker', image)
             // Add a GeoJSON source with 2 points
         map.addSource('points', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: [{
-                            // feature for Bhadrakali
-                            type: 'Feature',
-                            geometry: {
-                                type: 'Point',
-                                coordinates: [85.31803723700848, 27.69799486867092],
-                            },
-                            properties: {
-                                title: 'Bhadrakali',
-                                "prop0": "value0",
-                                "prop1": "0.0",
-                            },
-                        },
-                        {
-                            // feature for Marriot
-                            type: 'Feature',
-                            geometry: {
-                                type: 'Point',
-                                coordinates: [85.32375517550032, 27.7123552519937],
-                            },
-                            properties: {
-                                title: 'Marriot',
-                                "prop0": "value1",
-                                "prop1": "1.1",
-                            },
-                        },
-                    ],
-                },
-            })
-            // Add a symbol layer
+            type: 'geojson',
+            data: mygeojson
+                // data: mygeojson
+        });
+        // Add a symbol layer
         map.addLayer({
             id: 'points',
             type: 'symbol',
@@ -171,7 +169,7 @@ map.on('load', () => {
             // Information Display
             let stringOutput = "";
             const keyValue = (input) => Object.entries(input).forEach(([key, value]) => {
-                let tempString = '<div class="col-md-5">' + key + '</div><div class="col-md-7">' + value.toString() + '</div>'
+                let tempString = '<li class="list-group-item"><div class="row"><div class="col-md-2">' + key + '</div><div class="col-md-10">' + value.toString() + '</div></div></li>'
                     // tempString.append("<div>", key, "</div><div>", value, "</div>");
                     // console.log(tempString);
                     // console.log(key, value.toString());
